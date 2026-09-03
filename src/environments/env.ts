@@ -1,4 +1,3 @@
-
 export const siteConfig = {
   name: "Jagdamba Nursery",
   siteUrl: "https://122kamaljeet.github.io/jagdamba-nursery/",
@@ -12,3 +11,16 @@ export const siteConfig = {
 } as const;
 
 export const whatsappUrl = `https://wa.me/${siteConfig.whatsappNumber}`;
+
+export const locations = [
+  {
+    name: "Jagdamba Pesticides",
+    address: siteConfig.address,
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Jagdamba+Pesticides+Ambala+Haryana",
+  },
+  {
+    name: "Jagdamba Farm",
+    address: siteConfig.address,
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Jagdamba+Farm+Ambala+Haryana",
+  },
+] as const;

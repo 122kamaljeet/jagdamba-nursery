@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { siteConfig, whatsappUrl } from "../environments/env";
+import { locations, siteConfig, whatsappUrl } from "../environments/env";
 ---
 
 <BaseLayout
@@ -91,5 +91,41 @@ import { siteConfig, whatsappUrl } from "../environments/env";
         Send Enquiry
       </button>
     </form>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-6 pb-20" aria-labelledby="visit-us-heading">
+    <div class="mb-8 max-w-2xl" data-reveal>
+      <p class="text-sm font-medium uppercase tracking-widest text-grass">Visit us</p>
+      <h2 id="visit-us-heading" class="mt-2 text-3xl">Find our shop and farm</h2>
+      <p class="mt-3 text-ink/70">
+        Visit Jagdamba Pesticides for enquiries, or contact us before visiting Jagdamba Farm for grass availability.
+      </p>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-2">
+      {locations.map((location) => (
+        <article class="overflow-hidden rounded-3xl bg-white shadow-soft" data-reveal>
+          <iframe
+            title={`Map showing ${location.name}`}
+            src={`https://www.google.com/maps?q=${encodeURIComponent(location.name + " " + location.address)}&output=embed`}
+            class="h-64 w-full border-0"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+          <div class="p-6">
+            <h3 class="text-xl">{location.name}</h3>
+            <p class="mt-2 text-sm text-ink/70">{location.address}</p>
+            <a
+              href={location.mapUrl}
+              target="_blank"
+              rel="noreferrer"
+              class="mt-5 inline-flex rounded-full bg-forest px-5 py-2.5 text-sm font-medium text-paper transition-colors hover:bg-grass"
+            >
+              Get directions <span class="sr-only">to {location.name}</span>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
   </section>
 </BaseLayout>

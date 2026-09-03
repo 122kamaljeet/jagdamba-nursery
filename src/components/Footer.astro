@@ -23,15 +23,21 @@ const year = new Date().getFullYear();
         <p class="text-paper/75">{siteConfig.address}</p>
         <p class="text-paper/75">Phone: {siteConfig.phoneDisplay}</p>
         {siteConfig.email && <p class="text-paper/75">Email: {siteConfig.email}</p>}
-        <p class="text-paper/75">Mon–Sat, 8am–6pm</p>
+        <p class="text-paper/75">{siteConfig.hours}</p>
+        <a
+          href="/jagdamba-nursery/contact#visit-us-heading"
+          class="mt-2 inline-block text-paper underline underline-offset-4 hover:text-white"
+        >
+          Visit our locations
+        </a>
       </div>
       <div class="text-sm">
         <p class="font-medium mb-3">Explore</p>
         <ul class="space-y-2 text-paper/75">
-          <li><a href=`${siteConfig.base}/varieties` class="hover:text-white">Our Grass Varieties</a></li>
-          <li><a href=`${siteConfig.base}/gallery` class="hover:text-white">Gallery</a></li>
-          <li><a href=`${siteConfig.base}/blog` class="hover:text-white">Guides</a></li>
-          <li><a href=`${siteConfig.base}/contact` class="hover:text-white">Request a Quote</a></li>
+          <li><a href={`${siteConfig.base}/varieties`} class="hover:text-white">Our Grass Varieties</a></li>
+          <li><a href={`${siteConfig.base}/gallery`} class="hover:text-white">Gallery</a></li>
+          <li><a href={`${siteConfig.base}/blog`} class="hover:text-white">Guides</a></li>
+          <li><a href={`${siteConfig.base}/contact`} class="hover:text-white">Request a Quote</a></li>
         </ul>
       </div>
     </div>
