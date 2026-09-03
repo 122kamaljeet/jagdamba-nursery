@@ -1,0 +1,33 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import VarietyCard from "@components/VarietyCard.astro";
+import { getCollection } from "astro:content";
+
+const varieties = (await getCollection("varieties")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<BaseLayout
+  title="Our Grass Varieties"
+  description="Compare Selection No. 1, Korean, and Neelgiri lawn grass grown by Jagdamba Nursery, and find the right one for your lawn."
+>
+  <section class="mx-auto max-w-6xl px-6 py-20">
+    <h1 class="text-4xl" data-reveal>Our Grass Varieties</h1>
+    <p class="mt-4 text-ink/70 max-w-prose" data-reveal>
+      We grow three varieties, each suited to a different kind of lawn. Tap
+      any of them for details on sun needs, maintenance, and best use.
+    </p>
+    <div class="mt-12 grid sm:grid-cols-2 md:grid-cols-3 gap-10">
+      {varieties.map((v, i) => (
+        <VarietyCard
+          name={v.data.name}
+          slug={v.data.slug}
+          tagline={v.data.tagline}
+          image={v.data.image}
+          badge={i === 0 ? "Most popular" : undefined}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

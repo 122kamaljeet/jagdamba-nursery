@@ -1,0 +1,93 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Contact Us"
+  description="Get a quote from Jagdamba Nursery for Selection No. 1, Korean, or Neelgiri grass — call, WhatsApp, or send an enquiry."
+>
+  <section class="mx-auto max-w-5xl px-6 py-20 grid md:grid-cols-2 gap-14">
+    <div data-reveal>
+      <h1 class="text-4xl">Get a Quote</h1>
+      <p class="mt-4 text-ink/70">
+        Tell us the variety, the area you need to cover, and your location —
+        we'll get back to you with pricing and availability.
+      </p>
+
+      <div class="mt-8 space-y-3 text-sm rounded-3xl bg-forest/5 p-6">
+        <p><span class="text-ink/50">Phone:</span> +91-XXXXXXXXXX</p>
+        <p><span class="text-ink/50">Address:</span> Ambala, Haryana, India</p>
+        <p><span class="text-ink/50">Hours:</span> Mon–Sat, 8am–6pm</p>
+      </div>
+
+      <a
+        href="https://wa.me/91XXXXXXXXXX"
+        class="mt-8 inline-flex items-center gap-2 rounded-full bg-grass px-7 py-3.5 text-sm font-medium text-white hover:bg-forest hover:-translate-y-0.5 transition-all"
+      >
+        Chat on WhatsApp
+      </a>
+    </div>
+
+    <!--
+      Replace the form "action" below with your Formspree endpoint
+      (or any form backend) since GitHub Pages can't process form
+      submissions on its own. https://formspree.io has a free tier.
+    -->
+    <form
+      action="https://formspree.io/f/YOUR_FORM_ID"
+      method="POST"
+      class="space-y-5 rounded-4xl bg-white shadow-soft p-8"
+      data-reveal
+    >
+      <div>
+        <label for="name" class="block text-sm mb-1">Name</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          required
+          class="w-full rounded-xl border border-forest/15 bg-paper px-4 py-2.5 text-sm focus:border-grass outline-none transition-colors"
+        />
+      </div>
+      <div>
+        <label for="phone" class="block text-sm mb-1">Phone</label>
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          required
+          class="w-full rounded-xl border border-forest/15 bg-paper px-4 py-2.5 text-sm focus:border-grass outline-none transition-colors"
+        />
+      </div>
+      <div>
+        <label for="variety" class="block text-sm mb-1">Grass variety</label>
+        <select
+          id="variety"
+          name="variety"
+          class="w-full rounded-xl border border-forest/15 bg-paper px-4 py-2.5 text-sm focus:border-grass outline-none transition-colors"
+        >
+          <option>Not sure — please advise</option>
+          <option>Selection No. 1</option>
+          <option>Korean</option>
+          <option>Neelgiri</option>
+        </select>
+      </div>
+      <div>
+        <label for="message" class="block text-sm mb-1">Details</label>
+        <textarea
+          id="message"
+          name="message"
+          rows="4"
+          placeholder="Area to cover, location, timeline..."
+          class="w-full rounded-xl border border-forest/15 bg-paper px-4 py-2.5 text-sm focus:border-grass outline-none transition-colors"
+        ></textarea>
+      </div>
+      <button
+        type="submit"
+        class="w-full rounded-full bg-forest px-6 py-3.5 text-sm font-medium text-paper hover:bg-grass transition-colors"
+      >
+        Send Enquiry
+      </button>
+    </form>
+  </section>
+</BaseLayout>

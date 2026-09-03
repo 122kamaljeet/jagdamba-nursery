@@ -1,0 +1,31 @@
+---
+interface Props {
+  name: string;
+  slug: string;
+  tagline: string;
+  image: string;
+  badge?: string;
+}
+const { name, slug, tagline, image, badge } = Astro.props;
+---
+
+<a href={`/varieties/${slug}`} class="group block" data-reveal>
+  <div class="relative aspect-[4/3] overflow-hidden rounded-3xl bg-soil/10 shadow-card">
+    <img
+      src={image}
+      alt={`${name} lawn grass grown at Jagdamba Nursery`}
+      loading="lazy"
+      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+    />
+    {badge && (
+      <span class="absolute top-3 left-3 rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-forest">
+        {badge}
+      </span>
+    )}
+  </div>
+  <h3 class="mt-4 text-xl">{name}</h3>
+  <p class="mt-1 text-sm text-ink/70">{tagline}</p>
+  <span class="mt-2 inline-flex items-center gap-1 text-sm text-grass group-hover:gap-2 transition-all">
+    See details →
+  </span>
+</a>

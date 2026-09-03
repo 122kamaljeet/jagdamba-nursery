@@ -1,0 +1,54 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import CTAButton from "@components/CTAButton.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const varieties = await getCollection("varieties");
+  return varieties.map((v) => ({
+    params: { slug: v.data.slug },
+    props: { variety: v },
+  }));
+}
+
+const { variety } = Astro.props;
+const { Content } = await render(variety);
+const { name, tagline, idealFor, sunlight, maintenance, image } = variety.data;
+---
+
+<BaseLayout
+  title={name}
+  description={`${tagline} Grown fresh at Jagdamba Nursery in Ambala, Haryana.`}
+>
+  <section class="mx-auto max-w-4xl px-6 py-20">
+    <div class="aspect-[16/9] rounded-4xl overflow-hidden shadow-soft" data-reveal>
+      <img src={image} alt={`${name} lawn grass`} class="h-full w-full object-cover" />
+    </div>
+
+    <h1 class="mt-8 text-4xl" data-reveal>{name}</h1>
+    <p class="mt-2 text-lg text-ink/70" data-reveal>{tagline}</p>
+
+    <dl class="mt-8 grid sm:grid-cols-3 gap-6 text-sm" data-reveal>
+      <div class="rounded-2xl bg-forest/5 p-5">
+        <dt class="text-ink/50">Ideal for</dt>
+        <dd class="mt-1">{idealFor.join(", ")}</dd>
+      </div>
+      <div class="rounded-2xl bg-forest/5 p-5">
+        <dt class="text-ink/50">Sunlight</dt>
+        <dd class="mt-1">{sunlight}</dd>
+      </div>
+      <div class="rounded-2xl bg-forest/5 p-5">
+        <dt class="text-ink/50">Maintenance</dt>
+        <dd class="mt-1">{maintenance}</dd>
+      </div>
+    </dl>
+
+    <div class="prose prose-neutral mt-10 max-w-prose" data-reveal>
+      <Content />
+    </div>
+
+    <div class="mt-10" data-reveal>
+      <CTAButton href="/contact">Request a Quote for {name}</CTAButton>
+    </div>
+  </section>
+</BaseLayout>

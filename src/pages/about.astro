@@ -1,0 +1,50 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import CTAButton from "@components/CTAButton.astro";
+import StatCounter from "@components/StatCounter.astro";
+---
+
+<BaseLayout
+  title="About Us"
+  description="Jagdamba Nursery is a grass farm in Ambala, Haryana — we grow our own lawn grass rather than reselling it."
+>
+  <section class="mx-auto max-w-6xl px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
+    <div data-reveal>
+      <h1 class="text-4xl">About Jagdamba Nursery</h1>
+      <p class="mt-6 text-lg text-ink/80">
+        Jagdamba Nursery is a grass farm based in Ambala, Haryana. Unlike
+        suppliers who buy and resell turf, we grow every roll ourselves —
+        Selection No. 1, Korean, and Neelgiri — across our own fields.
+      </p>
+      <p class="mt-4 text-ink/80">
+        Growing our own grass means we control quality at every stage: the
+        soil, the cutting schedule, and how fresh it is when it reaches you.
+      </p>
+      <div class="mt-8">
+        <CTAButton href="/contact">Get in Touch</CTAButton>
+      </div>
+    </div>
+    <div class="rounded-4xl overflow-hidden shadow-soft" data-reveal>
+      <img
+        src="https://picsum.photos/seed/nursery-team/900/700"
+        alt="Jagdamba Nursery farm team in the fields"
+        class="w-full h-full object-cover"
+      />
+    </div>
+  </section>
+
+  <section class="bg-forest/5 py-16">
+    <div class="mx-auto max-w-4xl px-6 grid grid-cols-3 gap-4">
+      <StatCounter target={15} suffix="+" label="Years farming" />
+      <StatCounter target={3} label="Grass varieties" />
+      <StatCounter target={500} suffix="+" label="Lawns supplied" />
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-3xl px-6 py-20 text-center" data-reveal>
+    <p class="text-2xl font-display text-forest leading-snug">
+      "We help homeowners, landscapers, and contractors choose the variety
+      that actually fits their site — not just whatever's easiest to move."
+    </p>
+  </section>
+</BaseLayout>

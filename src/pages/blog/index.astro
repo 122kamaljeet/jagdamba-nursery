@@ -1,0 +1,30 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<BaseLayout
+  title="Guides"
+  description="Grass and lawn care guides from Jagdamba Nursery, written for Haryana's climate and conditions."
+>
+  <section class="mx-auto max-w-3xl px-6 py-20">
+    <h1 class="text-4xl">Guides</h1>
+    <p class="mt-4 text-ink/70">
+      Practical notes on choosing and maintaining lawn grass in this region.
+    </p>
+    <ul class="mt-12 space-y-8">
+      {posts.map((post) => (
+        <li class="border-b border-forest/10 pb-8">
+          <a href={`/blog/${post.data.slug}`} class="text-2xl hover:text-grass">
+            {post.data.title}
+          </a>
+          <p class="mt-2 text-sm text-ink/70">{post.data.description}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

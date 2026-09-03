@@ -1,0 +1,38 @@
+---
+interface Props {
+  target: number;
+  suffix?: string;
+  label: string;
+}
+const { target, suffix = "", label } = Astro.props;
+const id = `stat-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<div class="rounded-3xl bg-white/90 shadow-card px-6 py-5 text-center" data-reveal>
+  <p class="text-3xl font-display text-forest">
+    <span id={id} data-target={target}>0</span>{suffix}
+  </p>
+  <p class="mt-1 text-xs text-ink/60">{label}</p>
+</div>
+
+<script define:vars={{ id, target }}>
+  const el = document.getElementById(id);
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        const duration = 1200;
+        const start = performance.now();
+        function tick(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          el.textContent = Math.round(progress * target).toLocaleString();
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        observer.disconnect();
+      }
+    },
+    { threshold: 0.4 }
+  );
+  observer.observe(el);
+</script>

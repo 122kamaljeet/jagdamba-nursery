@@ -1,0 +1,43 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+}
+const { title, description, path } = Astro.props;
+const siteUrl = "https://jagdambanursery.com";
+const canonical = new URL(path, siteUrl).toString();
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "Store",
+  name: "Jagdamba Nursery",
+  description:
+    "Grass growers and suppliers offering Selection No. 1, Korean, and Neelgiri lawn grass, grown and cut fresh on our own fields.",
+  url: siteUrl,
+  telephone: "+91-XXXXXXXXXX",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Ambala",
+    addressRegion: "Haryana",
+    addressCountry: "IN",
+  },
+  areaServed: "Haryana, India",
+  makesOffer: [
+    { "@type": "Offer", itemOffered: { "@type": "Product", name: "Selection No. 1 Grass" } },
+    { "@type": "Offer", itemOffered: { "@type": "Product", name: "Korean Grass" } },
+    { "@type": "Offer", itemOffered: { "@type": "Product", name: "Neelgiri Grass" } },
+  ],
+};
+---
+
+<title>{title} | Jagdamba Nursery</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content={`${title} | Jagdamba Nursery`} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+
+<script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />

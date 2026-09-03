@@ -1,0 +1,40 @@
+---
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About Us" },
+  { href: "/varieties", label: "Our Grass" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/blog", label: "Guides" },
+  { href: "/contact", label: "Contact" },
+];
+const current = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-40 px-4 pt-4">
+  <div
+    class="mx-auto max-w-6xl flex items-center justify-between rounded-full bg-white/80 backdrop-blur-md border border-forest/10 shadow-card px-6 py-3"
+  >
+    <a href="/" class="font-display text-lg text-forest">
+      Jagdamba <span class="text-grass">Nursery</span>
+    </a>
+    <nav aria-label="Primary" class="hidden md:flex items-center gap-7 text-sm">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            "hover:text-grass transition-colors",
+            current === link.href ? "text-forest font-medium" : "text-ink/70",
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+    <a
+      href="https://wa.me/91XXXXXXXXXX"
+      class="hidden md:inline-flex items-center gap-1.5 rounded-full bg-grass px-5 py-2 text-sm text-white hover:bg-forest transition-colors"
+    >
+      WhatsApp Us
+    </a>
+  </div>
+</header>

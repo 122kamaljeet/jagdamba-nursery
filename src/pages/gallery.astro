@@ -1,0 +1,50 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const photos = [
+  { src: "https://picsum.photos/seed/field-1/700/700", alt: "Rows of grass growing at our fields" },
+  { src: "https://picsum.photos/seed/field-2/700/700", alt: "Selection No. 1 grass ready for cutting" },
+  { src: "https://picsum.photos/seed/lawn-1/700/700", alt: "Korean grass lawn installed for a client" },
+  { src: "https://picsum.photos/seed/lawn-2/700/700", alt: "Neelgiri grass covering an open ground" },
+  { src: "https://picsum.photos/seed/harvest-1/700/700", alt: "Grass being cut and rolled for delivery" },
+  { src: "https://picsum.photos/seed/delivery-1/700/700", alt: "Fresh grass rolls loaded for delivery" },
+];
+---
+
+<BaseLayout
+  title="Gallery"
+  description="Photos and video from our fields and finished lawn projects using Jagdamba Nursery grass."
+>
+  <section class="mx-auto max-w-6xl px-6 py-20">
+    <h1 class="text-4xl" data-reveal>Gallery</h1>
+    <p class="mt-4 text-ink/70 max-w-prose" data-reveal>
+      A look at our fields and some of the lawns our grass has gone into.
+    </p>
+
+    <div class="mt-10 rounded-4xl overflow-hidden shadow-soft" data-reveal>
+      <video
+        class="w-full aspect-video object-cover"
+        controls
+        poster="https://picsum.photos/seed/field-video/1200/675"
+      >
+        <source
+          src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+          type="video/mp4"
+        />
+      </video>
+    </div>
+
+    <div class="mt-12 grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+      {photos.map((photo) => (
+        <div class="group aspect-square overflow-hidden rounded-3xl shadow-card" data-reveal>
+          <img
+            src={photo.src}
+            alt={photo.alt}
+            loading="lazy"
+            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

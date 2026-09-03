@@ -1,0 +1,199 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import VarietyCard from "@components/VarietyCard.astro";
+import CTAButton from "@components/CTAButton.astro";
+import StatCounter from "@components/StatCounter.astro";
+import Marquee from "@components/Marquee.astro";
+import { getCollection } from "astro:content";
+
+const varieties = (await getCollection("varieties")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const steps = [
+  {
+    n: "01",
+    title: "Choose your grass",
+    body: "Tell us your lawn size and how it's used — we'll recommend Selection No. 1, Korean, or Neelgiri.",
+  },
+  {
+    n: "02",
+    title: "We cut it fresh",
+    body: "Your order is cut from our fields the same week, not pulled from cold storage.",
+  },
+  {
+    n: "03",
+    title: "We deliver it",
+    body: "Rolls arrive ready to lay, across Ambala and nearby districts in Haryana.",
+  },
+  {
+    n: "04",
+    title: "You lay a lawn",
+    body: "Fresh-cut grass establishes faster — most lawns take root within two weeks.",
+  },
+];
+
+const testimonials = [
+  {
+    quote:
+      "The grass arrived the same week we ordered it and took root faster than anything we'd bought before.",
+    name: "Landscaper, Panchkula",
+    avatar: "https://i.pravatar.cc/80?img=12",
+  },
+  {
+    quote:
+      "We needed a large open ground covered quickly — Neelgiri filled in within a month.",
+    name: "Facilities Manager, Ambala",
+    avatar: "https://i.pravatar.cc/80?img=32",
+  },
+  {
+    quote:
+      "Korean grass gave our front lawn the finished, manicured look we wanted.",
+    name: "Homeowner, Chandigarh",
+    avatar: "https://i.pravatar.cc/80?img=45",
+  },
+];
+---
+
+<BaseLayout
+  title="Grass Growers in Ambala, Haryana"
+  description="Jagdamba Nursery grows and supplies Selection No. 1, Korean, and Neelgiri lawn grass, cut fresh from our own fields in Ambala, Haryana."
+>
+  <!-- Hero -->
+  <section class="relative mx-4 mt-6 overflow-hidden rounded-4xl">
+    <video
+      class="absolute inset-0 h-full w-full object-cover"
+      autoplay
+      muted
+      loop
+      playsinline
+      poster="https://picsum.photos/seed/grass-hero/1600/900"
+    >
+      <source
+        src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+        type="video/mp4"
+      />
+    </video>
+    <div class="absolute inset-0 bg-forest/70"></div>
+
+    <div class="relative px-6 py-24 md:py-32 text-center max-w-3xl mx-auto">
+      <p
+        class="inline-block rounded-full bg-white/15 px-4 py-1.5 text-xs text-white/90 mb-6"
+        data-reveal
+      >
+        Grown in Ambala, Haryana
+      </p>
+      <h1 class="text-4xl md:text-6xl leading-tight text-white" data-reveal>
+        Lawn grass, grown fresh — not stored in a warehouse.
+      </h1>
+      <p class="mt-6 text-lg text-white/85 max-w-xl mx-auto" data-reveal>
+        Selection No. 1, Korean, and Neelgiri grass — grown, cut, and
+        delivered by the farmers who grow it.
+      </p>
+      <div class="mt-9 flex flex-wrap justify-center gap-4" data-reveal>
+        <CTAButton href="/contact">Request a Quote</CTAButton>
+        <a
+          href="/varieties"
+          class="inline-flex items-center gap-2 rounded-full bg-white/15 px-7 py-3.5 text-sm text-white hover:bg-white/25 transition-colors"
+        >
+          See Our Grass →
+        </a>
+      </div>
+    </div>
+
+    <div class="relative grid grid-cols-3 gap-4 px-6 pb-10 md:px-16 md:pb-14">
+      <StatCounter target={15} suffix="+" label="Years farming" />
+      <StatCounter target={3} label="Grass varieties" />
+      <StatCounter target={500} suffix="+" label="Lawns supplied" />
+    </div>
+  </section>
+
+  <Marquee
+    items={[
+      "Selection No. 1",
+      "Korean Grass",
+      "Neelgiri Grass",
+      "Grown fresh in Ambala",
+      "Delivered across Haryana",
+    ]}
+  />
+
+  <!-- Varieties -->
+  <section class="mx-auto max-w-6xl px-6 py-24">
+    <div class="max-w-xl" data-reveal>
+      <h2 class="text-3xl">Our Grass Varieties</h2>
+      <p class="mt-3 text-ink/70">
+        Each one suits a different kind of lawn. Not sure which is right for
+        you? Reach out and we'll help you choose.
+      </p>
+    </div>
+    <div class="mt-12 grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+      {varieties.map((v, i) => (
+        <VarietyCard
+          name={v.data.name}
+          slug={v.data.slug}
+          tagline={v.data.tagline}
+          image={v.data.image}
+          badge={i === 0 ? "Most popular" : undefined}
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="bg-forest/5 py-24">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="max-w-xl" data-reveal>
+        <h2 class="text-3xl">From field to lawn, in four steps</h2>
+        <p class="mt-3 text-ink/70">
+          You order once. We handle the rest.
+        </p>
+      </div>
+      <div class="mt-14 grid md:grid-cols-4 gap-6">
+        {steps.map((step) => (
+          <div
+            class="rounded-3xl bg-white p-6 shadow-card"
+            data-reveal
+          >
+            <p class="text-sm text-grass font-medium">{step.n}</p>
+            <h3 class="mt-3 text-lg">{step.title}</h3>
+            <p class="mt-2 text-sm text-ink/65">{step.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="mx-auto max-w-6xl px-6 py-24">
+    <h2 class="text-3xl" data-reveal>What people say</h2>
+    <div class="mt-12 grid md:grid-cols-3 gap-6">
+      {testimonials.map((t) => (
+        <div class="rounded-3xl bg-white p-6 shadow-card" data-reveal>
+          <p class="text-sm text-ink/75 leading-relaxed">"{t.quote}"</p>
+          <div class="mt-5 flex items-center gap-3">
+            <img src={t.avatar} alt="" class="h-9 w-9 rounded-full" />
+            <span class="text-xs text-ink/60">{t.name}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="mx-4 mb-6">
+    <div
+      class="mx-auto max-w-6xl rounded-4xl bg-forest text-paper py-16 px-6 text-center"
+      data-reveal
+    >
+      <h2 class="text-3xl text-paper">Ready to talk grass?</h2>
+      <p class="mt-2 text-paper/80">
+        Tell us about your project and we'll recommend the right variety and
+        quantity.
+      </p>
+      <div class="mt-8 flex justify-center gap-4">
+        <CTAButton href="/contact">Request a Quote</CTAButton>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
