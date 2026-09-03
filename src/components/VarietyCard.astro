@@ -1,4 +1,6 @@
 ---
+import { siteConfig } from '../environments/env';
+
 interface Props {
   name: string;
   slug: string;
@@ -9,7 +11,7 @@ interface Props {
 const { name, slug, tagline, image, badge } = Astro.props;
 ---
 
-<a href={`/jagdamba-nursery/varieties/${slug}`} class="group block" data-reveal>
+<a href={`${siteConfig.base}/varieties/${slug}`} class="group block" data-reveal>
   <div class="relative aspect-[4/3] overflow-hidden rounded-3xl bg-soil/10 shadow-card">
     <img
       src={image}

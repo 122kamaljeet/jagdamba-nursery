@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import { siteConfig, whatsappUrl } from "../environments/env";
 ---
 
 <BaseLayout
@@ -15,13 +16,14 @@ import BaseLayout from "@layouts/BaseLayout.astro";
       </p>
 
       <div class="mt-8 space-y-3 text-sm rounded-3xl bg-forest/5 p-6">
-        <p><span class="text-ink/50">Phone:</span> +91-8607482160</p>
-        <p><span class="text-ink/50">Address:</span> Ambala, Haryana, India</p>
-        <p><span class="text-ink/50">Hours:</span> Mon–Sat, 8am–6pm</p>
+        <p><span class="text-ink/50">Phone:</span> {siteConfig.phoneDisplay}</p>
+        {siteConfig.email && <p><span class="text-ink/50">Email:</span> {siteConfig.email}</p>}
+        <p><span class="text-ink/50">Address:</span> {siteConfig.address}</p>
+        <p><span class="text-ink/50">Hours:</span> {siteConfig.hours}</p>
       </div>
 
       <a
-        href="https://wa.me/918607482160"
+        href={whatsappUrl}
         class="mt-8 inline-flex items-center gap-2 rounded-full bg-grass px-7 py-3.5 text-sm font-medium text-white hover:bg-forest hover:-translate-y-0.5 transition-all"
       >
         Chat on WhatsApp

@@ -1,21 +1,24 @@
 ---
+import { siteConfig } from "../environments/env";
+
 interface Props {
   title: string;
   description: string;
   path: string;
 }
 const { title, description, path } = Astro.props;
-const siteUrl = "https://jagdambanursery.com";
+const siteUrl = siteConfig.siteUrl;
 const canonical = new URL(path, siteUrl).toString();
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "Store",
-  name: "Jagdamba Nursery",
+  name: siteConfig.name,
   description:
     "Grass growers and suppliers offering Selection No. 1, Korean, and Neelgiri lawn grass, grown and cut fresh on our own fields.",
   url: siteUrl,
-  telephone: "+91-XXXXXXXXXX",
+  telephone: siteConfig.phoneDisplay,
+  ...(siteConfig.email ? { email: siteConfig.email } : {}),
   address: {
     "@type": "PostalAddress",
     addressLocality: "Ambala",

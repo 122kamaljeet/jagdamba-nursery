@@ -5,6 +5,7 @@ import CTAButton from "@components/CTAButton.astro";
 import StatCounter from "@components/StatCounter.astro";
 import Marquee from "@components/Marquee.astro";
 import { getCollection } from "astro:content";
+import { siteConfig } from "../environments/env";
 
 const varieties = (await getCollection("varieties")).sort(
   (a, b) => a.data.order - b.data.order
@@ -91,9 +92,9 @@ const testimonials = [
         delivered by us because we are the ones who grow it.
       </p>
       <div class="mt-9 flex flex-wrap justify-center gap-4" data-reveal>
-        <CTAButton href="/jagdamba-nursery/contact">Request a Quote</CTAButton>
+        <CTAButton href={`${siteConfig.base}/contact`}>Request a Quote</CTAButton>
         <a
-          href="/jagdamba-nursery/varieties"
+          href={`${siteConfig.base}/varieties`}
           class="inline-flex items-center gap-2 rounded-full bg-white/15 px-7 py-3.5 text-sm text-white hover:bg-white/25 transition-colors"
         >
           See Our Grass →
@@ -192,7 +193,7 @@ const testimonials = [
         quantity.
       </p>
       <div class="mt-8 flex justify-center gap-4">
-        <CTAButton href="/jagdamba-nursery/contact">Request a Quote</CTAButton>
+        <CTAButton href={`${siteConfig.base}/contact`}>Request a Quote</CTAButton>
       </div>
     </div>
   </section>

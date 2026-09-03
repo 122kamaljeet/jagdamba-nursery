@@ -1,11 +1,13 @@
 ---
+import { siteConfig, whatsappUrl } from "../environments/env";
+
 const links = [
-  { href: "/jagdamba-nursery/", label: "Home" },
-  { href: "/jagdamba-nursery/about", label: "About Us" },
-  { href: "/jagdamba-nursery/varieties", label: "Our Grass" },
-  { href: "/jagdamba-nursery/gallery", label: "Gallery" },
-  { href: "/jagdamba-nursery/blog", label: "Guides" },
-  { href: "/jagdamba-nursery/contact", label: "Contact" },
+  { href: siteConfig.base, label: "Home" },
+  { href: `${siteConfig.base}/about`, label: "About Us" },
+  { href: `${siteConfig.base}/varieties`, label: "Our Grass" },
+  { href: `${siteConfig.base}/gallery`, label: "Gallery" },
+  { href: `${siteConfig.base}/blog`, label: "Guides" },
+  { href: `${siteConfig.base}/contact`, label: "Contact" },
 ];
 const current = Astro.url.pathname;
 ---
@@ -15,7 +17,7 @@ const current = Astro.url.pathname;
     class="relative mx-auto max-w-6xl rounded-3xl bg-white/80 backdrop-blur-md border border-forest/10 shadow-card px-5 py-3 md:flex md:items-center md:justify-between md:rounded-full md:px-6"
   >
     <div class="flex items-center justify-between gap-4">
-      <a href="/jagdamba-nursery/" class="font-display text-lg text-forest">
+      <a href={siteConfig.base} class="font-display text-lg text-forest">
         Jagdamba <span class="text-grass">Nursery</span>
       </a>
       <button
@@ -47,7 +49,7 @@ const current = Astro.url.pathname;
       ))}
     </nav>
     <a
-      href="https://wa.me/91XXXXXXXXXX"
+      href={whatsappUrl}
       class="hidden md:inline-flex items-center gap-1.5 rounded-full bg-grass px-5 py-2 text-sm text-white hover:bg-forest transition-colors"
     >
       WhatsApp Us
@@ -66,7 +68,7 @@ const current = Astro.url.pathname;
           </a>
         ))}
         <a
-          href="https://wa.me/91XXXXXXXXXX"
+          href={whatsappUrl}
           class="mt-2 inline-flex justify-center rounded-full bg-grass px-5 py-2.5 text-sm text-white hover:bg-forest transition-colors"
         >
           WhatsApp Us

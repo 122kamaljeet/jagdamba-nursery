@@ -1,4 +1,5 @@
 ---
+import { siteConfig, whatsappUrl } from "../environments/env";
 const year = new Date().getFullYear();
 ---
 
@@ -6,7 +7,7 @@ const year = new Date().getFullYear();
   <div class="mx-auto  bg-forest text-paper px-8 py-14">
     <div class="grid gap-10 md:grid-cols-3">
       <div>
-        <p class="font-display text-lg">Jagdamba Nursery</p>
+        <p class="font-display text-lg">{siteConfig.name}</p>
         <p class="mt-2 text-sm text-paper/75 max-w-xs">
           Grass growers based in Ambala, Haryana — Selection No. 1, Korean,
           and Neelgiri grass, grown and cut fresh on our own fields.
@@ -14,27 +15,28 @@ const year = new Date().getFullYear();
         <div class="mt-5 flex gap-3">
           <a href="#" aria-label="Instagram" class="h-9 w-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-grass transition-colors text-xs">IG</a>
           <a href="#" aria-label="Facebook" class="h-9 w-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-grass transition-colors text-xs">FB</a>
-          <a href="https://wa.me/91XXXXXXXXXX" aria-label="WhatsApp" class="h-9 w-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-grass transition-colors text-xs">WA</a>
+          <a href={whatsappUrl} aria-label="WhatsApp" class="h-9 w-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-grass transition-colors text-xs">WA</a>
         </div>
       </div>
       <div class="text-sm">
         <p class="font-medium mb-3">Contact</p>
-        <p class="text-paper/75">Ambala, Haryana, India</p>
-        <p class="text-paper/75">Phone: +91-XXXXXXXXXX</p>
+        <p class="text-paper/75">{siteConfig.address}</p>
+        <p class="text-paper/75">Phone: {siteConfig.phoneDisplay}</p>
+        {siteConfig.email && <p class="text-paper/75">Email: {siteConfig.email}</p>}
         <p class="text-paper/75">Mon–Sat, 8am–6pm</p>
       </div>
       <div class="text-sm">
         <p class="font-medium mb-3">Explore</p>
         <ul class="space-y-2 text-paper/75">
-          <li><a href="/jagdamba-nursery/varieties" class="hover:text-white">Our Grass Varieties</a></li>
-          <li><a href="/jagdamba-nursery/gallery" class="hover:text-white">Gallery</a></li>
-          <li><a href="/jagdamba-nursery/blog" class="hover:text-white">Guides</a></li>
-          <li><a href="/jagdamba-nursery/contact" class="hover:text-white">Request a Quote</a></li>
+          <li><a href=`${siteConfig.base}/varieties` class="hover:text-white">Our Grass Varieties</a></li>
+          <li><a href=`${siteConfig.base}/gallery` class="hover:text-white">Gallery</a></li>
+          <li><a href=`${siteConfig.base}/blog` class="hover:text-white">Guides</a></li>
+          <li><a href=`${siteConfig.base}/contact` class="hover:text-white">Request a Quote</a></li>
         </ul>
       </div>
     </div>
     <div class="border-t border-paper/10 mt-10 pt-6 text-center text-xs text-paper/60">
-      © {year} Jagdamba Nursery. All rights reserved.
+      © {year} {siteConfig.name}. All rights reserved.
     </div>
   </div>
 </footer>
