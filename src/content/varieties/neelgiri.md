@@ -5,7 +5,7 @@ tagline: "A hardy, fast-spreading grass built for larger lawns and open ground c
 idealFor: ["Large lawns", "Parks & open grounds", "Commercial landscaping"]
 sunlight: "Full sun"
 maintenance: "Low — spreads and self-repairs quickly"
-image: "https://picsum.photos/seed/grass-neelgiri/800/600"
+image: "/media/varieties/neelgiri.jpg"
 order: 3
 ---
 

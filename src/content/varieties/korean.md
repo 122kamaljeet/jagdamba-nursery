@@ -5,7 +5,7 @@ tagline: "A soft, tightly-knit lawn grass prized for its manicured, carpet-like 
 idealFor: ["Premium lawns", "Resorts & farmhouses", "Poolside gardens"]
 sunlight: "Full sun"
 maintenance: "Medium — regular mowing and watering for best density"
-image: "https://picsum.photos/seed/grass-korean/800/600"
+image: "/media/varieties/korean.JPG"
 order: 2
 ---
 

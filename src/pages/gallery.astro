@@ -1,14 +1,50 @@
 ---
+import fs from "node:fs";
+import path from "node:path";
 import BaseLayout from "@layouts/BaseLayout.astro";
 
-const photos = [
-  { src: "https://picsum.photos/seed/field-1/700/700", alt: "Rows of grass growing at our fields" },
-  { src: "https://picsum.photos/seed/field-2/700/700", alt: "Selection No. 1 grass ready for cutting" },
-  { src: "https://picsum.photos/seed/lawn-1/700/700", alt: "Korean grass lawn installed for a client" },
-  { src: "https://picsum.photos/seed/lawn-2/700/700", alt: "Neelgiri grass covering an open ground" },
-  { src: "https://picsum.photos/seed/harvest-1/700/700", alt: "Grass being cut and rolled for delivery" },
-  { src: "https://picsum.photos/seed/delivery-1/700/700", alt: "Fresh grass rolls loaded for delivery" },
-];
+const galleryDirectory = path.join(process.cwd(), "public", "media", "gallery");
+const imageExtensions = new Set([".avif", ".gif", ".jpeg", ".jpg", ".png", ".webp"]);
+const videoExtensions = new Set([".m4v", ".mp4", ".ogv", ".webm"]);
+
+const findMediaFiles = (directory: string): string[] =>
+  fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const entryPath = path.join(directory, entry.name);
+    return entry.isDirectory() ? findMediaFiles(entryPath) : [entryPath];
+  });
+
+const media = findMediaFiles(galleryDirectory)
+  .map((filePath) => {
+    const extension = path.extname(filePath).toLowerCase();
+    const type = imageExtensions.has(extension)
+      ? "image"
+      : videoExtensions.has(extension)
+        ? "video"
+        : null;
+    const relativePath = path.relative(galleryDirectory, filePath);
+    const fileName = path.basename(filePath);
+
+    return type
+      ? {
+          type,
+          name: fileName,
+          src: `/media/gallery/${relativePath
+            .split(path.sep)
+            .map((segment) => encodeURIComponent(segment))
+            .join("/")}`,
+          alt: path
+            .basename(fileName, extension)
+            .replace(/[-_]+/g, " ")
+            .replace(/\s+/g, " ")
+            .trim(),
+        }
+      : null;
+  })
+  .filter((item): item is NonNullable<typeof item> => item !== null)
+  .sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
+
+const photos = media.filter((item) => item.type === "image");
+const videos = media.filter((item) => item.type === "video");
 ---
 
 <BaseLayout
@@ -21,18 +57,23 @@ const photos = [
       A look at our fields and some of the lawns our grass has gone into.
     </p>
 
-    <div class="mt-10 rounded-4xl overflow-hidden shadow-soft" data-reveal>
-      <video
-        class="w-full aspect-video object-cover"
-        controls
-        poster="https://picsum.photos/seed/field-video/1200/675"
-      >
-        <source
-          src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
-          type="video/mp4"
-        />
-      </video>
-    </div>
+    {videos.length > 0 && (
+      <div class="mt-10 grid gap-4 md:grid-cols-2">
+        {videos.map((video) => (
+          <div class="overflow-hidden rounded-4xl shadow-soft" data-reveal>
+            <video
+              class="w-full aspect-video object-cover bg-forest/10"
+              controls
+              preload="metadata"
+              playsinline
+            >
+              <source src={video.src} />
+              Your browser does not support this video format.
+            </video>
+          </div>
+        ))}
+      </div>
+    )}
 
     <div class="mt-12 grid sm:grid-cols-2 md:grid-cols-3 gap-4">
       {photos.map((photo) => (

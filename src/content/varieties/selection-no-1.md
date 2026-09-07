@@ -5,7 +5,7 @@ tagline: "Our most popular lawn grass — dense, fine-bladed, and easy to mainta
 idealFor: ["Home lawns", "Front yards", "Landscaped gardens"]
 sunlight: "Full sun to partial shade"
 maintenance: "Low — mow every 2–3 weeks"
-image: "https://picsum.photos/seed/grass-selection1/800/600"
+image: "/media/varieties/selection-no-1.JPG"
 order: 1
 ---
 
