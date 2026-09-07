@@ -6,7 +6,6 @@ import { siteConfig } from "./src/environments/env";
 // Replace with your real domain once purchased/connected.
 export default defineConfig({
   site: siteConfig.siteUrl,
-  base: siteConfig.base,
   devToolbar: {
     enabled: false,
   },

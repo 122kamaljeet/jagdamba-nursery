@@ -2,12 +2,12 @@
 import { siteConfig, whatsappUrl } from "../environments/env";
 
 const links = [
-  { href: siteConfig.base, label: "Home" },
-  { href: `${siteConfig.base}/about`, label: "About Us" },
-  { href: `${siteConfig.base}/varieties`, label: "Our Grass" },
-  { href: `${siteConfig.base}/gallery`, label: "Gallery" },
-  { href: `${siteConfig.base}/blog`, label: "Guides" },
-  { href: `${siteConfig.base}/contact`, label: "Contact" },
+  { href: "/", label: "Home" },
+  { href: `/about`, label: "About Us" },
+  { href: `/varieties`, label: "Our Grass" },
+  { href: `/gallery`, label: "Gallery" },
+  { href: `/blog`, label: "Guides" },
+  { href: `/contact`, label: "Contact" },
 ];
 const current = Astro.url.pathname;
 ---
@@ -17,7 +17,7 @@ const current = Astro.url.pathname;
     class="relative mx-auto max-w-6xl rounded-3xl bg-white/80 backdrop-blur-md border border-forest/10 shadow-card px-5 py-3 md:flex md:items-center md:justify-between md:rounded-full md:px-6"
   >
     <div class="flex items-center justify-between gap-4">
-      <a href={siteConfig.base} class="font-display text-lg text-forest">
+      <a href="/" class="font-display text-lg text-forest">
         Jagdamba <span class="text-grass">Nursery</span>
       </a>
       <button

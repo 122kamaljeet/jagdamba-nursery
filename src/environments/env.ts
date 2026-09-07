@@ -1,7 +1,6 @@
 export const siteConfig = {
   name: "Jagdamba Nursery",
   siteUrl: " http://jagdambanursery.in/",
-  base: "/",
   phoneDisplay: "+91-8607482160",
   phone: "918607482160",
   email: "",
