@@ -3,8 +3,8 @@ export const siteConfig = {
   shortName: "Jagdamba Nursery",
   siteUrl: "https://jagdambanursery.in",
   logo: "/media/logo/jagdamba%20logo.png",
-  description:
-    "Jagdamba Nursery Manka Manki, Ambala grows and supplies fresh Selection No. 1, Korean, and Neelgiri lawn grass.",
+  Title: "Jagdamba Nursery Manka Manki, Ambala | Lawn Grass Supplier",
+  description: "Jagdamba Nursery Manka Manki, Ambala supplies fresh lawn grass including Selection No. 1, Korean, and Neelgiri grass for homes, gardens, and landscaping needs across Haryana and nearby areas.",
   phoneDisplay: "+91-9671844750",
   phone: "919671844750",
   email: "jagdamba.agriservices@gmail.com",
