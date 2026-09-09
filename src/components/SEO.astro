@@ -9,18 +9,23 @@ interface Props {
 const { title, description, path } = Astro.props;
 const siteUrl = siteConfig.siteUrl;
 const canonical = new URL(path, siteUrl).toString();
+const pageTitle = `${title} | ${siteConfig.name}`;
+const logoUrl = new URL(siteConfig.logo, siteUrl).toString();
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "Store",
+  "@type": "GardenStore",
   name: siteConfig.name,
-  description:
-    "Grass growers and suppliers offering Selection No. 1, Korean, and Neelgiri lawn grass, grown and cut fresh on our own fields.",
+  alternateName: siteConfig.shortName,
+  description: siteConfig.description,
   url: siteUrl,
+  logo: logoUrl,
+  image: logoUrl,
   telephone: siteConfig.phoneDisplay,
   ...(siteConfig.email ? { email: siteConfig.email } : {}),
   address: {
     "@type": "PostalAddress",
+    streetAddress: "Manka Manki",
     addressLocality: "Ambala",
     addressRegion: "Haryana",
     addressCountry: "IN",
@@ -34,13 +39,24 @@ const localBusinessSchema = {
 };
 ---
 
-<title>{title} | Jagdamba Nursery</title>
+<title>{pageTitle}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonical} />
+<link rel="icon" href={siteConfig.logo} type="image/png" />
+<meta name="author" content={siteConfig.name} />
+<meta name="robots" content="index, follow" />
 
 <meta property="og:type" content="website" />
-<meta property="og:title" content={`${title} | Jagdamba Nursery`} />
+<meta property="og:site_name" content={siteConfig.name} />
+<meta property="og:title" content={pageTitle} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonical} />
+<meta property="og:image" content={logoUrl} />
+<meta property="og:image:alt" content={siteConfig.name} />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={logoUrl} />
 
 <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />

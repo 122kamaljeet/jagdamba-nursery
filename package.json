@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "astro dev",
-    "build": "node scripts/convert-gallery-videos.mjs && astro build",
+    "build": "astro build",
     "preview": "astro preview",
     "deploy": "npm run build && firebase deploy",
     "lint": "eslint . --ext .astro,.ts",
