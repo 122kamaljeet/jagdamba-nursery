@@ -77,15 +77,75 @@ const videos = media.filter((item) => item.type === "video");
 
     <div class="mt-12 grid sm:grid-cols-2 md:grid-cols-3 gap-4">
       {photos.map((photo) => (
-        <div class="group aspect-square overflow-hidden rounded-3xl shadow-card" data-reveal>
+        <button
+          type="button"
+          class="group aspect-square overflow-hidden rounded-3xl shadow-card text-left outline-none"
+          data-reveal
+          data-lightbox-trigger
+          data-src={photo.src}
+          data-alt={photo.alt}
+          aria-label={`Open image: ${photo.alt}`}
+        >
           <img
             src={photo.src}
             alt={photo.alt}
             loading="lazy"
             class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
           />
-        </div>
+        </button>
       ))}
     </div>
   </section>
+
+  <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-ink/80 p-4" aria-hidden="true">
+    <button type="button" class="absolute inset-0 cursor-default" data-close-lightbox aria-label="Close image preview"></button>
+    <div class="relative max-h-[90vh] max-w-5xl overflow-hidden rounded-3xl bg-paper shadow-2xl">
+      <button type="button" class="absolute right-3 top-3 z-10 rounded-full bg-ink/80 px-3 py-1.5 text-sm text-paper" data-close-lightbox aria-label="Close image">
+        Close
+      </button>
+      <img id="lightbox-image" src="" alt="" class="max-h-[90vh] w-auto max-w-full object-contain" />
+    </div>
+  </div>
+
+  <script>
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightbox-image");
+    const triggerButtons = document.querySelectorAll("[data-lightbox-trigger]");
+    const closeButtons = document.querySelectorAll("[data-close-lightbox]");
+
+    const closeLightbox = () => {
+      lightbox?.classList.add("hidden");
+      lightbox?.classList.remove("flex");
+      document.body.classList.remove("overflow-hidden");
+      lightbox?.setAttribute("aria-hidden", "true");
+    };
+
+    triggerButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = button;
+        if (lightboxImage && lightbox) {
+          lightboxImage.src = target.getAttribute("data-src") || "";
+          lightboxImage.alt = target.getAttribute("data-alt") || "";
+        }
+        lightbox?.classList.remove("hidden");
+        lightbox?.classList.add("flex");
+        document.body.classList.add("overflow-hidden");
+        lightbox?.setAttribute("aria-hidden", "false");
+      });
+    });
+
+    closeButtons.forEach((button) => {
+      button.addEventListener("click", closeLightbox);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && lightbox && !lightbox.classList.contains("hidden")) {
+        closeLightbox();
+      }
+    });
+
+    lightbox?.addEventListener("click", (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+  </script>
 </BaseLayout>
