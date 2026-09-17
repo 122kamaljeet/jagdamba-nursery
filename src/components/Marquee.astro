@@ -3,16 +3,34 @@ interface Props {
   items: string[];
 }
 const { items } = Astro.props;
-const looped = [...items, ...items];
+// Duplicate enough times so the strip is always wider than the viewport
+const looped = [...items, ...items, ...items, ...items];
 ---
 
 <div class="overflow-hidden border-y border-forest/10 bg-forest/5 py-3">
-  <div class="marquee-track gap-10 text-sm text-forest/70 whitespace-nowrap">
+  <div class="marquee-track flex gap-10 text-sm text-forest/70 whitespace-nowrap w-max">
     {looped.map((item) => (
       <span class="flex items-center gap-2 px-4">
-        <span class="h-1.5 w-1.5 rounded-full bg-grass"></span>
+        <span class="h-1.5 w-1.5 rounded-full bg-grass shrink-0"></span>
         {item}
       </span>
     ))}
   </div>
 </div>
+
+<style>
+  @keyframes marquee-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .marquee-track {
+    animation: marquee-scroll 30s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
+  }
+</style>

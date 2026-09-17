@@ -8,11 +8,11 @@ const { target, suffix = "", label } = Astro.props;
 const id = `stat-${Math.random().toString(36).slice(2, 9)}`;
 ---
 
-<div class="rounded-3xl bg-white/90 shadow-card px-6 py-5 text-center" data-reveal>
-  <p class="text-3xl font-display text-forest">
+<div class="rounded-3xl bg-white/90 shadow-card px-2 py-4 sm:px-6 sm:py-5 text-center" data-reveal>
+  <p class="text-xl sm:text-3xl font-display text-forest leading-tight">
     <span id={id} data-target={target}>0</span>{suffix}
   </p>
-  <p class="mt-1 text-xs text-ink/60">{label}</p>
+  <p class="mt-1 text-[10px] sm:text-xs text-ink/60 leading-tight">{label}</p>
 </div>
 
 <script define:vars={{ id, target }}>
