@@ -14,7 +14,21 @@ export async function getStaticPaths() {
 
 const { variety } = Astro.props;
 const { Content } = await render(variety);
-const { name, tagline, idealFor, sunlight, maintenance, image } = variety.data;
+const { name, tagline, idealFor, sunlight, colour, establishment, maintenance, details, image } =
+  variety.data;
+
+const infoItems =
+  details.length > 0
+    ? details
+    : [
+        ...(Array.isArray(idealFor) && idealFor.length
+          ? [{ label: "Ideal for", value: idealFor.join(", ") }]
+          : []),
+        ...(sunlight ? [{ label: "Sunlight", value: sunlight }] : []),
+        ...(colour ? [{ label: "Colour", value: colour }] : []),
+        ...(establishment ? [{ label: "Establishment", value: establishment }] : []),
+        ...(maintenance ? [{ label: "Maintenance", value: maintenance }] : []),
+      ];
 ---
 
 <BaseLayout
@@ -29,19 +43,13 @@ const { name, tagline, idealFor, sunlight, maintenance, image } = variety.data;
     <h1 class="mt-8 text-4xl" data-reveal>{name}</h1>
     <p class="mt-2 text-lg text-ink/70" data-reveal>{tagline}</p>
 
-    <dl class="mt-8 grid sm:grid-cols-3 gap-6 text-sm" data-reveal>
-      <div class="rounded-2xl bg-forest/5 p-5">
-        <dt class="text-ink/50">Ideal for</dt>
-        <dd class="mt-1">{idealFor.join(", ")}</dd>
-      </div>
-      <div class="rounded-2xl bg-forest/5 p-5">
-        <dt class="text-ink/50">Sunlight</dt>
-        <dd class="mt-1">{sunlight}</dd>
-      </div>
-      <div class="rounded-2xl bg-forest/5 p-5">
-        <dt class="text-ink/50">Maintenance</dt>
-        <dd class="mt-1">{maintenance}</dd>
-      </div>
+    <dl class="mt-8 grid gap-6 text-sm md:grid-cols-2" data-reveal>
+      {infoItems.map(({ label, value }) => (
+        <div class="rounded-2xl bg-forest/5 p-5 max-w-[420px] w-full justify-self-center">
+          <dt class="text-ink/50">{label}</dt>
+          <dd class="mt-1 break-words leading-relaxed">{value}</dd>
+        </div>
+      ))}
     </dl>
 
     <div class="prose prose-neutral mt-10 max-w-prose" data-reveal>

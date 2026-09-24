@@ -1,18 +1,20 @@
 ---
 name: "Korean Grass"
 slug: "korean"
-tagline: "A soft, tightly-knit lawn grass prized for its manicured, carpet-like look."
-idealFor: ["Premium lawns", "Resorts & farmhouses", "Poolside gardens"]
-sunlight: "Full sun"
-maintenance: "Medium — regular mowing and watering for best density"
+tagline: "Hardy, dense and naturally springy — a distinctive carpet-like lawn grass."
+details:
+  - label: "Ideal for"
+    value: "Home lawns, Landscaped gardens & outdoor spaces"
+  - label: "Colour"
+    value: "Light green"
+  - label: "Establishment"
+    value: "Ready in approximately 4–5 months"
+  - label: "Maintenance"
+    value: "Low — usually only 2–3 cuttings per year"
 image: "/media/varieties/korean.jpeg"
 order: 2
 ---
 
-Korean grass is the variety landscapers reach for when the brief is "make it
-look like a golf course." Its narrow blade and tight growth habit give lawns
-a soft, uniform, carpet-like finish that holds up well in premium and
-show-lawn settings.
+Korean Grass is a hardy, dense-growing lawn grass that develops a thick, carpet-like structure. Its exceptionally dense growth gives the lawn a naturally springy feel underfoot, making it a distinctive choice for lawns and landscaped spaces.
 
-It needs a bit more attention than Selection No. 1 — consistent watering and
-mowing — but the finished look is hard to match.
+It takes approximately 4–5 months to establish and generally requires only 2–3 cuttings in a year. It maintains a light-green appearance and, depending on planting conditions, one bag can cover approximately 100–200 sq. ft. of area.

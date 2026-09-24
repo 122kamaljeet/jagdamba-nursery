@@ -2,9 +2,13 @@
 name: "Selection No. 1"
 slug: "selection-no-1"
 tagline: "Soft, fast-growing lawn grass — ideal for playgrounds, lawns, and open spaces."
-idealFor: ["Home lawns", "Playgrounds", "Parks & Open spaces"]
-sunlight: "Full sun to partial shade"
-maintenance: "Low care — cutting usually required every 4–5 weeks"
+details:
+  - label: "Ideal for"
+    value: "Home lawns, Playgrounds, Parks & Open spaces"
+  - label: "Sunlight"
+    value: "Full sun to partial shade"
+  - label: "Maintenance"
+    value: "Low care — cutting usually required every 4–5 weeks"
 image: "/media/varieties/selection-no-1.jpeg"
 order: 1
 ---

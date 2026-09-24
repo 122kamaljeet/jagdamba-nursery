@@ -7,9 +7,19 @@ const varieties = defineCollection({
     name: z.string(),
     slug: z.string(),
     tagline: z.string(),
-    idealFor: z.array(z.string()),
-    sunlight: z.string(),
-    maintenance: z.string(),
+    idealFor: z.array(z.string()).optional(),
+    sunlight: z.string().optional(),
+    colour: z.string().optional(),
+    establishment: z.string().optional(),
+    maintenance: z.string().optional(),
+    details: z
+      .array(
+        z.object({
+          label: z.string(),
+          value: z.string(),
+        }),
+      )
+      .default([]),
     image: z.string(),
     order: z.number(),
   }),
