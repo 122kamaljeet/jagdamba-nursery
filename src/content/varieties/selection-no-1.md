@@ -1,18 +1,14 @@
 ---
 name: "Selection No. 1"
 slug: "selection-no-1"
-tagline: "Our most popular lawn grass — dense, fine-bladed, and easy to maintain."
-idealFor: ["Home lawns", "Front yards", "Landscaped gardens"]
+tagline: "Soft, fast-growing lawn grass — ideal for playgrounds, lawns, and open spaces."
+idealFor: ["Home lawns", "Playgrounds", "Parks & Open spaces"]
 sunlight: "Full sun to partial shade"
-maintenance: "Low — mow every 2–3 weeks"
+maintenance: "Low care — cutting usually required every 4–5 weeks"
 image: "/media/varieties/selection-no-1.jpeg"
 order: 1
 ---
 
-Selection No. 1 is the grass most of our customers ask for by name. It forms a
-dense, even carpet with a fine blade that stays green through the growing
-season and handles regular foot traffic well, which is why it's our default
-recommendation for home lawns and landscaped gardens.
+Selection No. 1 is a soft, fast-growing grass that is especially well suited for playgrounds, lawns, and open spaces. It grows quickly and develops a dense, healthy cover even after cutting. With relatively low maintenance requirements, it is an easy choice for areas where you want a soft and durable green surface.
 
-Grown on our own fields, it's cut and delivered fresh — not stored for weeks
-in a warehouse — so it establishes faster once it's laid.
+Our grass is freshly grown on our own fields and delivered soon after cutting. Depending on the grass and planting conditions, one bag can cover approximately 250–400 sq. ft. of area, giving you fresh, dense coverage straight from our farm to your lawn.
