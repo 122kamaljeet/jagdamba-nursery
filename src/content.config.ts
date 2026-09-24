@@ -16,12 +16,13 @@ const varieties = defineCollection({
 });
 
 const blog = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/blog" }),
+  loader: glob({ pattern: "**/*.md", base: "./src/content/blogs" }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
     slug: z.string(),
     date: z.coerce.date(),
+    tags: z.array(z.string()).default([]),
   }),
 });
 

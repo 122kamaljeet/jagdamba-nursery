@@ -3,6 +3,7 @@ title: "Best Lawn Grass for Haryana's Climate"
 description: "A quick guide to choosing between Selection No. 1, Korean, and Neelgiri grass for lawns in Haryana's heat."
 slug: "best-grass-for-haryana-climate"
 date: 2026-09-01
+tags: ["Choosing grass", "Haryana climate", "Selection No. 1"]
 ---
 
 Haryana's summers are long and hot, and not every lawn grass holds up to
